@@ -9,7 +9,7 @@ from math import log2
 from unigrammodel import UNK_, STOP_
 
 
-def calculate_perplexity(eval_path: str, probs: dict) -> int:
+def calculate_perplexity(eval_path: str, probs: dict, report_mode=False) -> int:
     perplexity = -1
     exponent = 0
     eval_stream = open(eval_path, "r")
@@ -27,6 +27,7 @@ def calculate_perplexity(eval_path: str, probs: dict) -> int:
     #  Perplexity is equal to 2 to the power of the negative `l`
     perplexity = 2 ** -(exponent / corpus_size)
 
-    print("Unigram Perplexity Score: {}".format(perplexity))
+    if report_mode: print("Perplexity Score: {}".format(perplexity))
+
     eval_stream.close()
     return perplexity

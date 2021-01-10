@@ -16,7 +16,7 @@ class Unigrams:
         self.probabilities: dict
         self.vocab_size: int = 0  # assume empty vocab size to start
         self.extract_vocab(trainingDataPath)
-        self.report_training() if report_mode else print("Corpus consumed")
+        if report_mode: self.report_training()
 
     # main worker for unigram model training
     def extract_vocab(self, training_data_path):
@@ -62,7 +62,7 @@ class UnigramModel:
         self.probabilities: dict = None  # set up later
         self.unigrams = Unigrams(trainingDataPath, report_mode)
         self.learn()
-        self.report_learning() if report_mode else print("Corpus modeled")
+        if report_mode: self.report_learning()
 
     def learn(self):
         # probability is the number of encounters / total tokens
@@ -74,6 +74,7 @@ class UnigramModel:
 
         self.probabilities = {}
 
+        # Calc probs and add in some unkness
         for unigram in unigrams.keys():
             self.probabilities[unigram] = unigrams[unigram] / vocab_size
             if unigrams[unigram] <= 1:  # [unk] the single occurrence unigrams

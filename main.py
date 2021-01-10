@@ -1,16 +1,13 @@
-# This is a sample Python script.
+# HW 1 NLP 517
+# Wes Saunders -- All rights reserved etc
 
-# Press ⌃R to execute it or replace it with your code.
-# Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
+# Reads a sentence from our file and prints the test data
+from unigrammodel import *
+
+SMALL_BROWN_TRAIN_TXT = "./files/CSEP517-HW1-Data-Small/brown.train.txt"
+SMALL_BROWN_DEV_TXT = "./files/CSEP517-HW1-Data-Small/brown.dev.txt"
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press ⌘F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    print_hi('Wes')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    unigramModel = UnigramModel(SMALL_BROWN_TRAIN_TXT)
+    unigramModel.evaluate(SMALL_BROWN_DEV_TXT)

@@ -3,6 +3,10 @@
 # and 2) evaluate against another file -- to evaluate perplexity scores (fitness of model)
 from math import log2
 
+UNK_THRESHOLD = 1
+
+MAX_UNKS = 1000
+
 UNK_ = "[unk]"
 STOP_ = "~stop~"
 
@@ -77,7 +81,7 @@ class UnigramModel:
         # Calc probs and add in some unkness
         for unigram in unigrams.keys():
             self.probabilities[unigram] = unigrams[unigram] / vocab_size
-            if unigrams[unigram] <= 1:  # [unk] the single occurrence unigrams
+            if unigrams[unigram] <= UNK_THRESHOLD and unigrams[UNK_] < MAX_UNKS:  # [unk] the single occurrence unigrams
                 unigrams[UNK_] = unigrams.get(UNK_, 0) + unigrams[unigram]
         self.probabilities[UNK_] = unigrams[UNK_] / vocab_size
 

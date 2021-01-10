@@ -2,7 +2,7 @@
 # Wes Saunders -- All rights reserved etc
 
 # Reads a sentence from our file and prints the test data
-from files.PerplexityScorer import calculate_perplexity
+from PerplexityScorer import calculate_perplexity
 from unigrammodel import *
 
 SMALL_BROWN_TRAIN_TXT = "./files/CSEP517-HW1-Data-Small/brown.train.txt"

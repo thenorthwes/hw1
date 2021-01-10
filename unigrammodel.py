@@ -11,12 +11,12 @@ def pad_sentence(sentence: str):
     return sentence + " " + STOP_
 
 class Unigrams:
-    def __init__(self, trainingDataPath: str) -> None:
+    def __init__(self, trainingDataPath: str, report_mode) -> None:
         self.unigram_counter: dict = None  # set up when ready
         self.probabilities: dict
         self.vocab_size: int = 0  # assume empty vocab size to start
         self.extract_vocab(trainingDataPath)
-        self.report_training()
+        self.report_training() if report_mode else print("Corpus consumed")
 
     # main worker for unigram model training
     def extract_vocab(self, training_data_path):
@@ -58,11 +58,11 @@ class Unigrams:
         return self.vocab_size
 
 class UnigramModel:
-    def __init__(self, trainingDataPath: str) -> None:
+    def __init__(self, trainingDataPath: str, report_mode=False) -> None:
         self.probabilities: dict = None  # set up later
-        self.unigrams = Unigrams(trainingDataPath)
+        self.unigrams = Unigrams(trainingDataPath, report_mode)
         self.learn()
-        self.report_learning()
+        self.report_learning() if report_mode else print("Corpus modeled")
 
     def learn(self):
         # probability is the number of encounters / total tokens

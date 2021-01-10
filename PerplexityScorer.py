@@ -6,7 +6,7 @@ For a method of scoring the evalPath -- it is treated as one long sentence
 """
 from math import log2
 
-from unigrammodel import UNK_, STOP_
+from config import UNK_, STOP_
 
 
 def calculate_perplexity(eval_path: str, probs: dict, report_mode=False) -> int:

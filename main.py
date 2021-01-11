@@ -3,6 +3,7 @@
 
 # Reads a sentence from our file and prints the test data
 from PerplexityScorer import calculate_perplexity
+from ngrammodel import ngram
 from unigrammodel import *
 
 SMALL_BROWN_TRAIN_TXT = "./files/CSEP517-HW1-Data-Small/brown.train.txt"
@@ -15,3 +16,11 @@ if __name__ == '__main__':
     print("Perplexity Score for brown.dev -- unigram model (trained on brown.train) \n \t PERPLEXITY: {}".format(perplexity))
     perplexity = calculate_perplexity(SMALL_BROWN_TRAIN_TXT, unigramModel.probabilities)
     print("Perplexity Score for brown.train -- unigram model (trained on brown.train) \n \t PERPLEXITY: {}".format(perplexity))
+
+    # bigrams
+    bigram = ngram(SMALL_BROWN_TRAIN_TXT, 2)
+    print("Perplexity Score for brown.dev -- bigram model (trained on brown.train) \n \t PERPLEXITY: {}".format("fart"))
+
+    #trigrams
+    bigram = ngram(SMALL_BROWN_TRAIN_TXT, 2)
+    print("Perplexity Score for brown.dev -- bigram model (trained on brown.train) \n \t PERPLEXITY: {}".format("fart"))

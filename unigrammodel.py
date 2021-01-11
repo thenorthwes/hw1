@@ -74,9 +74,11 @@ class UnigramModel:
 
         # Calc probs and add in some unkness
         for unigram in unigrams.keys():
-            self.probabilities[unigram] = unigrams[unigram] / vocab_size
             if unigrams[unigram] <= UNK_THRESHOLD and unigrams[UNK_] < MAX_UNKS:  # [unk] the single occurrence unigrams
                 unigrams[UNK_] = unigrams.get(UNK_, 0) + unigrams[unigram]
+            else:
+                self.probabilities[unigram] = unigrams[unigram] / vocab_size
+
         self.probabilities[UNK_] = unigrams[UNK_] / vocab_size
 
     def report_learning(self):

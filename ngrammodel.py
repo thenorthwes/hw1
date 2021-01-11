@@ -36,9 +36,6 @@ class ngram:
             ngram_key = ngram_sight[0:len(ngram_sight)-1]
             self.probabilities[ngram_sight] = self.ngram_sighting[ngram_sight] / self.ngram_key_occurrence[ngram_key]
 
-        print("prob of I've got is {}".format(self.probabilities[("I've", "got")]))
-        print("prob of I might is {}".format(self.probabilities[("I", "might")]))
-
     def count_ngrams(self):
         return self.total_ngrams
 

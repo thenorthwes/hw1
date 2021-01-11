@@ -2,7 +2,7 @@
 # Wes Saunders -- All rights reserved etc
 
 # Reads a sentence from our file and prints the test data
-from PerplexityScorer import calculate_perplexity
+from PerplexityScorer import calculate_perplexity, calculate_ngram_perplexity
 from ngrammodel import ngram
 from unigrammodel import *
 
@@ -19,8 +19,12 @@ if __name__ == '__main__':
 
     # bigrams
     bigram = ngram(SMALL_BROWN_TRAIN_TXT, 2)
-    print("Perplexity Score for brown.dev -- bigram model (trained on brown.train) \n \t PERPLEXITY: {}".format("fart"))
+    perplexity = calculate_ngram_perplexity(SMALL_BROWN_DEV_TXT, bigram.probabilities, 2)
+
+    print("Perplexity Score for brown.dev -- bigram model (trained on brown.train) \n \t PERPLEXITY: {}".format(perplexity))
 
     #trigrams
-    bigram = ngram(SMALL_BROWN_TRAIN_TXT, 2)
-    print("Perplexity Score for brown.dev -- bigram model (trained on brown.train) \n \t PERPLEXITY: {}".format("fart"))
+    trigram = ngram(SMALL_BROWN_TRAIN_TXT, 3)
+    perplexity = calculate_ngram_perplexity(SMALL_BROWN_TRAIN_TXT, trigram.probabilities, 3)
+
+    print("Perplexity Score for brown.dev -- trigram model (trained on brown.train) \n \t PERPLEXITY: {}".format(perplexity))

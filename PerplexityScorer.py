@@ -6,7 +6,7 @@ For a method of scoring the evalPath -- it is treated as one long sentence
 """
 from math import log2
 
-from config import UNK_, STOP_
+from config import UNK_, STOP_, pad_sentence
 
 
 def calculate_perplexity(eval_path: str, probs: dict, report_mode=False) -> int:
@@ -23,6 +23,31 @@ def calculate_perplexity(eval_path: str, probs: dict, report_mode=False) -> int:
     # Add stop a single time
     corpus_size += 1
     exponent += log2(probs[STOP_])
+
+    #  Perplexity is equal to 2 to the power of the negative `l`
+    perplexity = 2 ** -(exponent / corpus_size)
+
+    if report_mode: print("Perplexity Score: {}".format(perplexity))
+
+    eval_stream.close()
+    return perplexity
+
+def calculate_ngram_perplexity(eval_path: str, probs: dict, ngram_size:int, report_mode=False) -> int:
+    perplexity = -1
+    exponent = 0
+    eval_stream = open(eval_path, "r")
+    sentence = eval_stream.readline()
+    ngram_counter = 0
+    corpus_size = 0
+    while sentence:
+        sentence_tokens = pad_sentence(sentence, ngram_size - 1).split()
+        corpus_size += len(sentence_tokens)
+        for i in range(len(sentence.split())):
+            ngram_key = tuple(sentence_tokens[i:i + ngram_size])
+            exponent += log2(probs[ngram_key])  # log2(probs.get(ngram_key, probs[UNK_]))
+            ngram_counter += 1
+            sentence = eval_stream.readline()
+
 
     #  Perplexity is equal to 2 to the power of the negative `l`
     perplexity = 2 ** -(exponent / corpus_size)

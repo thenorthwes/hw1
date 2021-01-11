@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="28e34026-3c5c-4662-a621-d164f79e4b51" name="Default Changelist" comment="Extracting some constants into config">
-      <change afterPath="$PROJECT_DIR$/files/test/testdata.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_config.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_ngrammodel.py" afterDir="false" />
+    <list default="true" id="28e34026-3c5c-4662-a621-d164f79e4b51" name="Default Changelist" comment="n gram and probs calc'd">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerplexityScorer.py" beforeDir="false" afterPath="$PROJECT_DIR$/PerplexityScorer.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ngrammodel.py" beforeDir="false" afterPath="$PROJECT_DIR$/ngrammodel.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unigrammodel.py" beforeDir="false" afterPath="$PROJECT_DIR$/unigrammodel.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -156,7 +152,7 @@
       <option name="presentableId" value="Default" />
       <updated>1610153134578</updated>
       <workItem from="1610153149429" duration="261000" />
-      <workItem from="1610153416073" duration="34289000" />
+      <workItem from="1610153416073" duration="36142000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1610153763114</created>
@@ -235,7 +231,14 @@
       <option name="project" value="LOCAL" />
       <updated>1610312773339</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="n gram and probs calc'd">
+      <created>1610334710436</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1610334710436</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -264,7 +267,8 @@
     <MESSAGE value="Put in some controls around max unkness -- 1000 unks and 1 occurence threshold -- produces results &#10;&#10;Perplexity Score for brown.dev -- unigram model (trained on brown.train) &#10; &#9; PERPLEXITY: 998.6706213787706&#10;Perplexity Score for brown.train -- unigram model (trained on brown.train) &#10; &#9; PERPLEXITY: 1300.9780671336237" />
     <MESSAGE value="Moving lost file" />
     <MESSAGE value="Extracting some constants into config" />
-    <option name="LAST_COMMIT_MESSAGE" value="Extracting some constants into config" />
+    <MESSAGE value="n gram and probs calc'd" />
+    <option name="LAST_COMMIT_MESSAGE" value="n gram and probs calc'd" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -287,6 +291,6 @@
     <SUITE FILE_PATH="coverage/hw1$Unittests_for_test_ngrammodel_Testngram.coverage" NAME="Unittests for test_ngrammodel.Testngram Coverage Results" MODIFIED="1610329628561" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/hw1$Unittests_for_test_config_Test_test_pad_sentence.coverage" NAME="Unittests for test_config.Test.test_pad_sentence Coverage Results" MODIFIED="1610317451726" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/hw1$Unittests_for_test_ngrammodel_Testngram_test_Experiment_unigram.coverage" NAME="Unittests for test_ngrammodel.Testngram.test_Experiment_unigram Coverage Results" MODIFIED="1610330541162" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/hw1$main.coverage" NAME="main Coverage Results" MODIFIED="1610333997019" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/hw1$main.coverage" NAME="main Coverage Results" MODIFIED="1610337088949" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

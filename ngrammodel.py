@@ -1,4 +1,5 @@
-from config import pad_sentence
+from config import pad_sentence, UNK_
+from unigrammodel import UNK_THRESHOLD, MAX_UNKS
 
 
 class ngram:
@@ -32,9 +33,21 @@ class ngram:
         training_data.close()
 
     def calculate_probabilities(self):
+        #add an unk space
+        unk_nom = 0
+        unk_denom = 0
         for ngram_sight in self.ngram_sighting.keys():
             ngram_key = ngram_sight[0:len(ngram_sight)-1]
-            self.probabilities[ngram_sight] = self.ngram_sighting[ngram_sight] / self.ngram_key_occurrence[ngram_key]
+
+            if self.ngram_sighting[ngram_sight] <= UNK_THRESHOLD and unk_nom < MAX_UNKS:
+                unk_nom += self.ngram_sighting[ngram_sight] # add all these things were unk'ing
+                unk_denom += self.ngram_key_occurrence[ngram_key] # and add all the occurrences of the key
+            else:
+                self.probabilities[ngram_sight] = self.ngram_sighting[ngram_sight] / self.ngram_key_occurrence[ngram_key]
+        if unk_denom > 0:
+            # we found items below our unk threshold
+            self.probabilities[UNK_] = unk_nom / unk_denom
+
 
     def count_ngrams(self):
         return self.total_ngrams

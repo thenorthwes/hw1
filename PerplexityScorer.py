@@ -44,7 +44,10 @@ def calculate_ngram_perplexity(eval_path: str, probs: dict, ngram_size:int, repo
         corpus_size += len(sentence_tokens)
         for i in range(len(sentence.split())):
             ngram_key = tuple(sentence_tokens[i:i + ngram_size])
-            exponent += log2(probs[ngram_key])  # log2(probs.get(ngram_key, probs[UNK_]))
+            if probs.get(ngram_key):
+                exponent += log2(probs[ngram_key])
+            else:
+                exponent += log2(probs[UNK_])
             ngram_counter += 1
             sentence = eval_stream.readline()
 

@@ -7,7 +7,8 @@ class ngram:
         self.total_ngrams = 0
         self.ngram_key_occurrence: dict = {}
         self.ngram_sighting: dict = {}
-        self.extract_vocab(training_data_path, ngram_size)
+        self.ngram_size = ngram_size
+        self.extract_vocab(training_data_path, self.ngram_size)
         self.probabilities: dict = {}
         self.calculate_probabilities()
 
@@ -46,7 +47,10 @@ class ngram:
                 self.probabilities[ngram_sight] = self.ngram_sighting[ngram_sight] / self.ngram_key_occurrence[ngram_key]
         if unk_denom > 0:
             # we found items below our unk threshold
-            self.probabilities[UNK_] = unk_nom / unk_denom
+            if self.ngram_size != 1:
+                self.probabilities[(UNK_,)] = unk_nom / unk_denom
+            else:
+                self.probabilities[(UNK_,)] = unk_nom / self.total_ngrams
 
 
     def count_ngrams(self):

@@ -15,14 +15,15 @@ def calculate_perplexity(eval_path: str, probs: dict, report_mode=False) -> int:
     eval_stream = open(eval_path, "r")
     sentence = eval_stream.readline()
     corpus_size = 0
+    unigram_counter = 0
     while sentence:
+        sentence = pad_sentence(sentence)
         for token in sentence.split():
             exponent += log2(probs.get(token, probs[UNK_]))
             corpus_size += 1
-            sentence = eval_stream.readline()
-    # Add stop a single time
-    corpus_size += 1
-    exponent += log2(probs[STOP_])
+            unigram_counter += 1
+        sentence = eval_stream.readline()
+
 
     #  Perplexity is equal to 2 to the power of the negative `l`
     perplexity = 2 ** -(exponent / corpus_size)
@@ -42,14 +43,15 @@ def calculate_ngram_perplexity(eval_path: str, probs: dict, ngram_size:int, repo
     while sentence:
         sentence_tokens = pad_sentence(sentence, ngram_size - 1).split()
         corpus_size += len(sentence_tokens)
-        for i in range(len(sentence.split())):
+        #print("Corpus size: {} sent size: {}".format(corpus_size, len(sentence_tokens)))
+        for i in range(len(sentence_tokens)):
             ngram_key = tuple(sentence_tokens[i:i + ngram_size])
             if probs.get(ngram_key):
                 exponent += log2(probs[ngram_key])
             else:
-                exponent += log2(probs[UNK_])
+                exponent += log2(probs[(UNK_,)])
             ngram_counter += 1
-            sentence = eval_stream.readline()
+        sentence = eval_stream.readline()
 
 
     #  Perplexity is equal to 2 to the power of the negative `l`

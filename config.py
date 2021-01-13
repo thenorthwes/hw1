@@ -1,6 +1,7 @@
 UNK_ = "[unk]"
 STOP_ = "~stop~"
 START_ = "[start]"
+WORKSPACE_ = "./workspace/"
 
 
 def pad_sentence(sentence: str, start_count=0):

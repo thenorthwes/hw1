@@ -6,8 +6,9 @@ For a method of scoring the evalPath -- it is treated as one long sentence
 """
 from math import log2, inf
 
-from config import UNK_, STOP_, pad_sentence
-
+from config import UNK_, STOP_, pad_sentence, WORKSPACE_
+from ngrammodel import write_new_training_data
+EVAL_UNKED_DATA_ = WORKSPACE_ + "ngram-eval_unked_data"
 
 def calculate_perplexity(eval_path: str, probs: dict, report_mode=False) -> int:
     perplexity = -1
@@ -34,10 +35,11 @@ def calculate_perplexity(eval_path: str, probs: dict, report_mode=False) -> int:
     return perplexity
 
 
-def calculate_ngram_perplexity(eval_path: str, probs: dict, ngram_size:int, ksmooth=0, report_mode=False) -> int:
+def calculate_ngram_perplexity(eval_path: str, vocab: dict, probs: dict, ngram_size:int, ksmooth=0, report_mode=False) -> int:
     perplexity = -1
     exponent = 0
-    eval_stream = open(eval_path, "r")
+    path_to_unked_data = write_new_training_data(eval_path, vocab, EVAL_UNKED_DATA_)
+    eval_stream = open(path_to_unked_data, "r")
     sentence = eval_stream.readline()
     ngram_counter = 0
     corpus_size = 0

@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="28e34026-3c5c-4662-a621-d164f79e4b51" name="Default Changelist" comment="cleaned up so that N-gram can handle unigram too &#10;&#10;learned today my unk strategy is bonks so gotta fix that">
+    <list default="true" id="28e34026-3c5c-4662-a621-d164f79e4b51" name="Default Changelist" comment="PROBLEM 1 -- &#10;&#10;This completes problem one -- or the code does at least N-Grams are unked via file writing and perpelxity is obviously infinity since we will encounter unknown ngrams (for bi/tri)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PerplexityScorer.py" beforeDir="false" afterPath="$PROJECT_DIR$/PerplexityScorer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/config.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ngrammodel.py" beforeDir="false" afterPath="$PROJECT_DIR$/ngrammodel.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -41,11 +40,12 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="TEXT" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/files" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/workspace" />
     <property name="settings.editor.selected.configurable" value="copyright" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/workspace" />
       <recent name="$PROJECT_DIR$/files" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -153,7 +153,7 @@
       <option name="presentableId" value="Default" />
       <updated>1610153134578</updated>
       <workItem from="1610153149429" duration="261000" />
-      <workItem from="1610153416073" duration="51799000" />
+      <workItem from="1610153416073" duration="55014000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1610153763114</created>
@@ -267,7 +267,14 @@
       <option name="project" value="LOCAL" />
       <updated>1610430582443</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="PROBLEM 1 -- &#10;&#10;This completes problem one -- or the code does at least N-Grams are unked via file writing and perpelxity is obviously infinity since we will encounter unknown ngrams (for bi/tri)">
+      <created>1610514805301</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1610514805301</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -301,7 +308,8 @@
     <MESSAGE value="fixing bug where i kept a unigram and unked it" />
     <MESSAGE value="unigram / bigram / trigram completed &#10;&#10;unk for N-grams is aproxed -- smoothing would solve a lot" />
     <MESSAGE value="cleaned up so that N-gram can handle unigram too &#10;&#10;learned today my unk strategy is bonks so gotta fix that" />
-    <option name="LAST_COMMIT_MESSAGE" value="cleaned up so that N-gram can handle unigram too &#10;&#10;learned today my unk strategy is bonks so gotta fix that" />
+    <MESSAGE value="PROBLEM 1 -- &#10;&#10;This completes problem one -- or the code does at least N-Grams are unked via file writing and perpelxity is obviously infinity since we will encounter unknown ngrams (for bi/tri)" />
+    <option name="LAST_COMMIT_MESSAGE" value="PROBLEM 1 -- &#10;&#10;This completes problem one -- or the code does at least N-Grams are unked via file writing and perpelxity is obviously infinity since we will encounter unknown ngrams (for bi/tri)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -329,6 +337,6 @@
     <SUITE FILE_PATH="coverage/hw1$Unittests_for_test_ngrammodel_Testngram.coverage" NAME="Unittests for test_ngrammodel.Testngram Coverage Results" MODIFIED="1610329628561" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/hw1$Unittests_for_test_config_Test_test_pad_sentence.coverage" NAME="Unittests for test_config.Test.test_pad_sentence Coverage Results" MODIFIED="1610317451726" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/hw1$Unittests_for_test_ngrammodel_Testngram_test_Experiment_unigram.coverage" NAME="Unittests for test_ngrammodel.Testngram.test_Experiment_unigram Coverage Results" MODIFIED="1610330541162" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/hw1$main.coverage" NAME="main Coverage Results" MODIFIED="1610514555950" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/hw1$main.coverage" NAME="main Coverage Results" MODIFIED="1610517237966" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

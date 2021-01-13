@@ -19,19 +19,19 @@ if __name__ == '__main__':
 
     # bigrams
     bigram = ngram(SMALL_BROWN_TRAIN_TXT, 2)
-    perplexity = calculate_ngram_perplexity(SMALL_BROWN_DEV_TXT, bigram.probabilities, 2)
+    perplexity = calculate_ngram_perplexity(SMALL_BROWN_DEV_TXT, bigram.vocabulary_space, bigram.probabilities, 2)
     print("Perplexity Score for brown.dev -- bigram model (trained on brown.train) \n \t PERPLEXITY: {}".format(
         perplexity))
-    perplexity = calculate_ngram_perplexity(SMALL_BROWN_TRAIN_TXT, bigram.probabilities, 2)
+    perplexity = calculate_ngram_perplexity(SMALL_BROWN_TRAIN_TXT, bigram.vocabulary_space, bigram.probabilities, 2)
     print("Perplexity Score for brown.train -- bigram model (trained on brown.train) \n \t PERPLEXITY: {}".format(
         perplexity))
 
     # trigrams
     trigram = ngram(SMALL_BROWN_TRAIN_TXT, 3)
-    perplexity = calculate_ngram_perplexity(SMALL_BROWN_DEV_TXT, trigram.probabilities, 3)
+    perplexity = calculate_ngram_perplexity(SMALL_BROWN_DEV_TXT, trigram.vocabulary_space, trigram.probabilities, 3)
     print("Perplexity Score for brown.dev -- trigram model (trained on brown.train) \n \t PERPLEXITY: {}".format(
         perplexity))
-    perplexity = calculate_ngram_perplexity(SMALL_BROWN_TRAIN_TXT, trigram.probabilities, 3)
+    perplexity = calculate_ngram_perplexity(SMALL_BROWN_TRAIN_TXT, trigram.vocabulary_space, trigram.probabilities, 3)
     print("Perplexity Score for brown.train -- trigram model (trained on brown.train) \n \t PERPLEXITY: {}".format(
         perplexity))
 

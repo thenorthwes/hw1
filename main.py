@@ -36,4 +36,5 @@ if __name__ == '__main__':
         perplexity))
 
     # # trigrams w/ K-Smoothing
-    # trigram_smooth =
+    trigram_smooth = ngram(SMALL_BROWN_TRAIN_TXT, 3)
+    perplexity = calculate_ngram_perplexity(SMALL_BROWN_DEV_TXT, trigram.vocabulary_space, trigram.probabilities, 3)

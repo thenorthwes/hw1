@@ -1,4 +1,4 @@
-from config import pad_sentence, UNK_, WORKSPACE_
+from config import pad_sentence, UNK_, WORKSPACE_, STOP_
 from unigrammodel import UNK_THRESHOLD, MAX_UNKS
 
 TRAINING_UNKED_DATA_ = WORKSPACE_ + "ngram-training_unked_data"
@@ -31,7 +31,7 @@ def write_new_training_data(training_data_path, vocab: dict, out_path):
 
 
 class ngram:
-    def __init__(self, training_data_path, ngram_size):
+    def __init__(self, training_data_path, ngram_size, ksize = 0 ):
         self.total_ngrams = 0
         self.ngram_key_occurrence: dict = {}
         self.ngram_sighting: dict = {}
@@ -92,6 +92,7 @@ class ngram:
         # loop through first and unk low occurrence words
         while sentence:
             sentence_tokens = sentence.split()
+            self.vocabulary_space[STOP_] = self.vocabulary_space.get(STOP_,0) + 1  # STOP Counts but start don't
             for vocab_instance in sentence_tokens:
                 # test for if this is a valid ngram with this size
                 self.vocabulary_space[vocab_instance] = self.vocabulary_space.get(vocab_instance,
@@ -106,7 +107,6 @@ class ngram:
                 self.unk_map[vocab_word] = UNK_
                 self.vocabulary_space.pop(vocab_word)
                 self.vocabulary_space[UNK_] += 1  # count every word
-
 # TODO the reason this works is because with START START UNK for my worst case -- in a new setence
 ## ACTUALLY I THNK ITS OK CAUSE WE PRE UNK THE UNSEEN TEXT
 # if i see START START CAPITOL and i search my probs -- dont find start start capitol -- i know i must unk capitol and add capitol to my new unked words and

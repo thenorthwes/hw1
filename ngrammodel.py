@@ -31,7 +31,7 @@ def write_new_training_data(training_data_path, vocab: dict, out_path):
 
 
 class ngram:
-    def __init__(self, training_data_path, ngram_size, ksize = 0 ):
+    def __init__(self, training_data_path, ngram_size, ksize=0):
         self.total_ngrams = 0
         self.ngram_key_occurrence: dict = {}
         self.ngram_sighting: dict = {}
@@ -43,7 +43,7 @@ class ngram:
         #  TODO Fix the path i pass in here -- i need some new file which has UNKS jammed in
         self.extract_vocab(path_to_unked_data, self.ngram_size)
         self.probabilities: dict = {}
-        self.calculate_probabilities()
+        self.calculate_probabilities(ksize)
 
     def extract_vocab(self, training_data_path, ngram_size):
         training_data = open(training_data_path, "r")
@@ -66,19 +66,15 @@ class ngram:
             sentence = training_data.readline()
         training_data.close()
 
-    def calculate_probabilities(self):
-        # add an unk space
-        unk_nom = 0
-        unk_denom = 0
+    def calculate_probabilities(self, k):
         for ngram_sight in self.ngram_sighting.keys():
             ngram_key = ngram_sight[0:len(ngram_sight) - 1]
-
-            if self.ngram_sighting[ngram_sight] <= UNK_THRESHOLD and unk_nom < MAX_UNKS and False:
-                unk_nom += self.ngram_sighting[ngram_sight]  # add all these things were unk'ing
-                unk_denom += self.ngram_key_occurrence[ngram_key]  # and add all the occurrences of the key
-            else:
-                self.probabilities[ngram_sight] = self.ngram_sighting[ngram_sight] / self.ngram_key_occurrence[
-                    ngram_key]
+            prob_numerator = self.ngram_sighting[ngram_sight] + k
+            prob_denominator = self.ngram_key_occurrence[ngram_key] + k * len(self.ngram_sighting.keys())
+            if k > 0:
+                # must verify that key + unk was seen -- to bound sightings to this prob space
+                print(tuple(ngram_key, UNK_))
+            self.probabilities[ngram_sight] = prob_numerator/ prob_denominator
 
     def count_ngrams(self):
         return self.total_ngrams
@@ -92,7 +88,7 @@ class ngram:
         # loop through first and unk low occurrence words
         while sentence:
             sentence_tokens = sentence.split()
-            self.vocabulary_space[STOP_] = self.vocabulary_space.get(STOP_,0) + 1  # STOP Counts but start don't
+            self.vocabulary_space[STOP_] = self.vocabulary_space.get(STOP_, 0) + 1  # STOP Counts but start don't
             for vocab_instance in sentence_tokens:
                 # test for if this is a valid ngram with this size
                 self.vocabulary_space[vocab_instance] = self.vocabulary_space.get(vocab_instance,

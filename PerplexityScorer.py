@@ -35,7 +35,7 @@ def calculate_perplexity(eval_path: str, probs: dict, report_mode=False) -> int:
     return perplexity
 
 
-def calculate_ngram_perplexity(eval_path: str, vocab: dict, probs: dict, ngram_size:int, ksmooth=0, report_mode=False) -> int:
+def calculate_ngram_perplexity(eval_path: str, vocab: dict, probs: dict, ngram_size:int, smoothed=False, report_mode=False) -> int:
     perplexity = -1
     exponent = 0
     path_to_unked_data = write_new_training_data(eval_path, vocab, EVAL_UNKED_DATA_)
@@ -51,7 +51,7 @@ def calculate_ngram_perplexity(eval_path: str, vocab: dict, probs: dict, ngram_s
             if probs.get(ngram_key):
                 exponent += log2(probs[ngram_key])
             else:
-                if ksmooth == 0:
+                if not smoothed:
                     exponent += -inf
 
             ngram_counter += 1

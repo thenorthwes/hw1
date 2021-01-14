@@ -35,3 +35,5 @@ if __name__ == '__main__':
     print("Perplexity Score for brown.train -- trigram model (trained on brown.train) \n \t PERPLEXITY: {}".format(
         perplexity))
 
+    # # trigrams w/ K-Smoothing
+    # trigram_smooth =

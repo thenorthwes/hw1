@@ -108,5 +108,6 @@ class ngram:
                 self.vocabulary_space[UNK_] += 1  # count every word
 
 # TODO the reason this works is because with START START UNK for my worst case -- in a new setence
+## ACTUALLY I THNK ITS OK CAUSE WE PRE UNK THE UNSEEN TEXT
 # if i see START START CAPITOL and i search my probs -- dont find start start capitol -- i know i must unk capitol and add capitol to my new unked words and
 # then as i grab new tuples from the dev set i must UNK words from my dev + new unked words which would result in START UNK foo or UNK foo UNK

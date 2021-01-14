@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="28e34026-3c5c-4662-a621-d164f79e4b51" name="Default Changelist" comment="PROBLEM 1 -- &#10;&#10;This completes problem one -- or the code does at least N-Grams are unked via file writing and perpelxity is obviously infinity since we will encounter unknown ngrams (for bi/tri)">
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ngrammodel.py" beforeDir="false" afterPath="$PROJECT_DIR$/ngrammodel.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -153,6 +154,7 @@
       <workItem from="1610153149429" duration="261000" />
       <workItem from="1610153416073" duration="55978000" />
       <workItem from="1610664713426" duration="1130000" />
+      <workItem from="1610667165900" duration="423000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1610153763114</created>
@@ -294,7 +296,14 @@
       <option name="project" value="LOCAL" />
       <updated>1610666609097</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="scarycrash">
+      <created>1610667498417</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1610667498417</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -332,7 +341,8 @@
     <MESSAGE value="PROBLEM 1 -- &#10;&#10;This completes problem one -- or the code does at least N-Grams are unked via file writing and perpelxity is obviously infinity since we will encounter unknown ngrams (for bi/tri)" />
     <MESSAGE value="HW1 done -- pre unking in the files" />
     <MESSAGE value="STOP is part of vocab" />
-    <option name="LAST_COMMIT_MESSAGE" value="STOP is part of vocab" />
+    <MESSAGE value="scarycrash" />
+    <option name="LAST_COMMIT_MESSAGE" value="scarycrash" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -360,6 +370,6 @@
     <SUITE FILE_PATH="coverage/hw1$Unittests_for_test_ngrammodel_Testngram.coverage" NAME="Unittests for test_ngrammodel.Testngram Coverage Results" MODIFIED="1610329628561" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/hw1$Unittests_for_test_config_Test_test_pad_sentence.coverage" NAME="Unittests for test_config.Test.test_pad_sentence Coverage Results" MODIFIED="1610317451726" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/hw1$Unittests_for_test_ngrammodel_Testngram_test_Experiment_unigram.coverage" NAME="Unittests for test_ngrammodel.Testngram.test_Experiment_unigram Coverage Results" MODIFIED="1610330541162" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/hw1$main.coverage" NAME="main Coverage Results" MODIFIED="1610666687437" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/hw1$main.coverage" NAME="main Coverage Results" MODIFIED="1610667561267" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

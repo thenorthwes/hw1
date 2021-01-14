@@ -67,14 +67,26 @@ class ngram:
         training_data.close()
 
     def calculate_probabilities(self, k):
+        vocab_x_k = k * len(self.vocabulary_space.keys())
         for ngram_sight in self.ngram_sighting.keys():
             ngram_key = ngram_sight[0:len(ngram_sight) - 1]
             prob_numerator = self.ngram_sighting[ngram_sight] + k
-            prob_denominator = self.ngram_key_occurrence[ngram_key] + k * len(self.ngram_sighting.keys())
+            prob_denominator = self.ngram_key_occurrence[ngram_key] + vocab_x_k
             if k > 0:
                 # must verify that key + unk was seen -- to bound sightings to this prob space
-                print(tuple(ngram_key, UNK_))
+                ngram_key_unk = ngram_key + (UNK_,)
+                if ngram_key_unk not in self.ngram_sighting.keys():
+                    #  We never saw the key + UNK but we did see the key so we need to bound the prob space
+                    self.probabilities[ngram_key_unk] = k / prob_denominator
+
             self.probabilities[ngram_sight] = prob_numerator/ prob_denominator
+        # TODO ONLY WORKS FOR TRIGRAM
+        ultimate_unk_gram = (UNK_, UNK_, UNK_)
+        if k > 0 and ultimate_unk_gram not in self.probabilities.keys():
+            # we may encounter a triple unk naturally so we only need to test
+            self.probabilities[ultimate_unk_gram] = k / vocab_x_k
+            print("interesting ")
+            print("Binding {} to a prob of {}".format(ultimate_unk_gram, self.probabilities[ultimate_unk_gram]))
 
     def count_ngrams(self):
         return self.total_ngrams

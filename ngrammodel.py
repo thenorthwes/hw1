@@ -1,5 +1,4 @@
-from config import pad_sentence, UNK_, WORKSPACE_, STOP_
-from unigrammodel import UNK_THRESHOLD, MAX_UNKS
+from config import pad_sentence, UNK_, WORKSPACE_, STOP_, UNK_THRESHOLD, MAX_UNKS
 
 TRAINING_UNKED_DATA_ = WORKSPACE_ + "ngram-training_unked_data"
 
@@ -27,7 +26,14 @@ def write_new_training_data(training_data_path, vocab: dict, out_path):
     # close input and output files
     fin.close()
     fout.close()
-    return TRAINING_UNKED_DATA_
+    return out_path
+
+
+def get_unk_tuple(ngram_size):
+    unk_tuple = ()
+    for i in range(ngram_size):
+        unk_tuple = unk_tuple + (UNK_,)
+    return unk_tuple
 
 
 class ngram:
@@ -40,7 +46,6 @@ class ngram:
         self.unk_map: dict = {}  # will be filled with no more than MAX UNKs based on low occurrence words in vocab space
         self.calculate_unkspace_and_vocab(training_data_path)
         path_to_unked_data = write_new_training_data(training_data_path, self.vocabulary_space, TRAINING_UNKED_DATA_)
-        #  TODO Fix the path i pass in here -- i need some new file which has UNKS jammed in
         self.extract_vocab(path_to_unked_data, self.ngram_size)
         self.probabilities: dict = {}
         self.calculate_probabilities(ksize)
@@ -80,13 +85,10 @@ class ngram:
                     self.probabilities[ngram_key_unk] = k / prob_denominator
 
             self.probabilities[ngram_sight] = prob_numerator/ prob_denominator
-        # TODO ONLY WORKS FOR TRIGRAM
-        ultimate_unk_gram = (UNK_, UNK_, UNK_)
+        ultimate_unk_gram = get_unk_tuple(self.ngram_size)
         if k > 0 and ultimate_unk_gram not in self.probabilities.keys():
             # we may encounter a triple unk naturally so we only need to test
             self.probabilities[ultimate_unk_gram] = k / vocab_x_k
-            print("interesting ")
-            print("Binding {} to a prob of {}".format(ultimate_unk_gram, self.probabilities[ultimate_unk_gram]))
 
     def count_ngrams(self):
         return self.total_ngrams
@@ -115,7 +117,3 @@ class ngram:
                 self.unk_map[vocab_word] = UNK_
                 self.vocabulary_space.pop(vocab_word)
                 self.vocabulary_space[UNK_] += 1  # count every word
-# TODO the reason this works is because with START START UNK for my worst case -- in a new setence
-## ACTUALLY I THNK ITS OK CAUSE WE PRE UNK THE UNSEEN TEXT
-# if i see START START CAPITOL and i search my probs -- dont find start start capitol -- i know i must unk capitol and add capitol to my new unked words and
-# then as i grab new tuples from the dev set i must UNK words from my dev + new unked words which would result in START UNK foo or UNK foo UNK

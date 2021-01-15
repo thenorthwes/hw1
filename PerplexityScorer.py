@@ -7,7 +7,8 @@ For a method of scoring the evalPath -- it is treated as one long sentence
 from math import log2, inf
 
 from config import UNK_, STOP_, pad_sentence, WORKSPACE_
-from ngrammodel import write_new_training_data
+from ngrammodel import write_new_training_data, get_unk_tuple
+
 EVAL_UNKED_DATA_ = WORKSPACE_ + "ngram-eval_unked_data"
 
 def calculate_perplexity(eval_path: str, probs: dict, report_mode=False) -> int:
@@ -36,7 +37,6 @@ def calculate_perplexity(eval_path: str, probs: dict, report_mode=False) -> int:
 
 
 def calculate_ngram_perplexity(eval_path: str, vocab: dict, probs: dict, ngram_size:int, smoothed=False, report_mode=False) -> int:
-    perplexity = -1
     exponent = 0
     path_to_unked_data = write_new_training_data(eval_path, vocab, EVAL_UNKED_DATA_)
     eval_stream = open(path_to_unked_data, "r")
@@ -45,7 +45,7 @@ def calculate_ngram_perplexity(eval_path: str, vocab: dict, probs: dict, ngram_s
     corpus_size = 0
     while sentence:
         sentence_tokens = pad_sentence(sentence, ngram_size - 1).split()
-        corpus_size += len(sentence_tokens)
+        corpus_size += len(sentence.split()) + 1  # don't count start -- but do count stop
         for i in range(len(sentence_tokens)):
             ngram_key = tuple(sentence_tokens[i:i + ngram_size])
             if probs.get(ngram_key):
@@ -53,6 +53,9 @@ def calculate_ngram_perplexity(eval_path: str, vocab: dict, probs: dict, ngram_s
             else:
                 if not smoothed:
                     exponent += -inf
+                else:
+                    # universal smooth -- words we knew but didnt see together
+                    exponent += log2(probs[get_unk_tuple(ngram_size)])
 
             ngram_counter += 1
         sentence = eval_stream.readline()

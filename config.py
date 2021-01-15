@@ -9,3 +9,8 @@ def pad_sentence(sentence: str, start_count=0):
     for i in range(start_count):
         padded_sentence = START_ + " " + padded_sentence
     return padded_sentence
+
+
+UNK_THRESHOLD = 1
+MAX_UNKS = 322
+

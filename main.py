@@ -37,37 +37,51 @@ if __name__ == '__main__':
         perplexity))
 
     # # trigrams w/ K-Smoothing
-    k = 1
+    k = 10
     n = 3
     trigram_smooth = ngram(SMALL_BROWN_TRAIN_TXT, n, k)
-    perplexity = calculate_ngram_perplexity(SMALL_BROWN_DEV_TXT, trigram_smooth.vocabulary_space,
+    perplexityDev = calculate_ngram_perplexity(SMALL_BROWN_DEV_TXT, trigram_smooth.vocabulary_space,
+                                            trigram_smooth.probabilities, n, smoothed=True)
+    perplexityTrain = calculate_ngram_perplexity(SMALL_BROWN_TRAIN_TXT, trigram_smooth.vocabulary_space,
                                             trigram_smooth.probabilities, n, smoothed=True)
     print(
-        "Perplexity Score for brown.train -- SMOOTHED  "
-        "trigram model (trained on brown.train) \n \t PERPLEXITY: {} \t k={}".format(
-            perplexity, k))
+        "Trigram model trained on brown.train\n"
+        "Perplexity Score for \t brown.dev \t\t\t    brown.train\n "
+        "\t\tPERPLEXITY: {}   |\t {} \t k={}".format(perplexityDev, perplexityTrain, k))
+
+    k = 1
+    trigram_smooth = ngram(SMALL_BROWN_TRAIN_TXT, n, k)
+    perplexityDev = calculate_ngram_perplexity(SMALL_BROWN_DEV_TXT, trigram_smooth.vocabulary_space,
+                                               trigram_smooth.probabilities, n, smoothed=True)
+    perplexityTrain = calculate_ngram_perplexity(SMALL_BROWN_TRAIN_TXT, trigram_smooth.vocabulary_space,
+                                                 trigram_smooth.probabilities, n, smoothed=True)
+    print("\t\tPERPLEXITY: {}   |\t {} \t k={}".format(perplexityDev, perplexityTrain, k))
+
     k = .1
     trigram_smooth = ngram(SMALL_BROWN_TRAIN_TXT, n, k)
-    perplexity = calculate_ngram_perplexity(SMALL_BROWN_DEV_TXT, trigram_smooth.vocabulary_space,
-                                            trigram_smooth.probabilities, n, smoothed=True)
-    print(
-        "Perplexity Score for brown.train -- SMOOTHED  "
-        "trigram model (trained on brown.train) \n \t PERPLEXITY: {} \t k={}".format(
-            perplexity, k))
+    perplexityDev = calculate_ngram_perplexity(SMALL_BROWN_DEV_TXT, trigram_smooth.vocabulary_space,
+                                               trigram_smooth.probabilities, n, smoothed=True)
+    perplexityTrain = calculate_ngram_perplexity(SMALL_BROWN_TRAIN_TXT, trigram_smooth.vocabulary_space,
+                                                 trigram_smooth.probabilities, n, smoothed=True)
+    print("\t\tPERPLEXITY: {}   |\t {} \t k={}".format(perplexityDev, perplexityTrain, k))
     k = .01
     trigram_smooth = ngram(SMALL_BROWN_TRAIN_TXT, n, k)
-    perplexity = calculate_ngram_perplexity(SMALL_BROWN_DEV_TXT, trigram_smooth.vocabulary_space,
-                                            trigram_smooth.probabilities, n, smoothed=True)
-    print(
-        "Perplexity Score for brown.train -- SMOOTHED  "
-        "trigram model (trained on brown.train) \n \t PERPLEXITY: {} \t k={}".format(
-            perplexity, k))
+    perplexityDev = calculate_ngram_perplexity(SMALL_BROWN_DEV_TXT, trigram_smooth.vocabulary_space,
+                                               trigram_smooth.probabilities, n, smoothed=True)
+    perplexityTrain = calculate_ngram_perplexity(SMALL_BROWN_TRAIN_TXT, trigram_smooth.vocabulary_space,
+                                                 trigram_smooth.probabilities, n, smoothed=True)
+    print("\t\tPERPLEXITY: {}   |\t {} \t k={}".format(perplexityDev, perplexityTrain, k))
     k = .001
     trigram_smooth = ngram(SMALL_BROWN_TRAIN_TXT, n, k)
-    perplexity = calculate_ngram_perplexity(SMALL_BROWN_DEV_TXT, trigram_smooth.vocabulary_space,
-                                            trigram_smooth.probabilities, n, smoothed=True)
-    print(
-        "Perplexity Score for brown.train -- SMOOTHED  "
-        "trigram model (trained on brown.train) \n \t PERPLEXITY: {} \t k={}".format(
-            perplexity, k))
-
+    perplexityDev = calculate_ngram_perplexity(SMALL_BROWN_DEV_TXT, trigram_smooth.vocabulary_space,
+                                               trigram_smooth.probabilities, n, smoothed=True)
+    perplexityTrain = calculate_ngram_perplexity(SMALL_BROWN_TRAIN_TXT, trigram_smooth.vocabulary_space,
+                                                 trigram_smooth.probabilities, n, smoothed=True)
+    print("\t\tPERPLEXITY: {}   |\t {} \t k={}".format(perplexityDev, perplexityTrain, k))
+    k = .0001
+    trigram_smooth = ngram(SMALL_BROWN_TRAIN_TXT, n, k)
+    perplexityDev = calculate_ngram_perplexity(SMALL_BROWN_DEV_TXT, trigram_smooth.vocabulary_space,
+                                               trigram_smooth.probabilities, n, smoothed=True)
+    perplexityTrain = calculate_ngram_perplexity(SMALL_BROWN_TRAIN_TXT, trigram_smooth.vocabulary_space,
+                                                 trigram_smooth.probabilities, n, smoothed=True)
+    print("\t\tPERPLEXITY: {}   |\t {} \t k={}".format(perplexityDev, perplexityTrain, k))

@@ -1,11 +1,7 @@
 # Implements unigram language model
 # primary uses are 1) train with a file (passed as a path) to train probabilities of words
 # and 2) evaluate against another file -- to evaluate perplexity scores (fitness of model)
-from config import UNK_, STOP_, pad_sentence
-
-UNK_THRESHOLD = 1
-
-MAX_UNKS = 1000
+from config import UNK_, STOP_, pad_sentence, UNK_THRESHOLD, MAX_UNKS
 
 
 class Unigrams:

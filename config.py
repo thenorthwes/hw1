@@ -12,5 +12,4 @@ def pad_sentence(sentence: str, start_count=0):
 
 
 UNK_THRESHOLD = 1
-MAX_UNKS = 322
-
+MAX_UNKS = 300

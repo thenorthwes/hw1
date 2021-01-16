@@ -107,7 +107,6 @@ class ngram:
                 # test for if this is a valid ngram with this size
                 self.vocabulary_space[vocab_instance] = self.vocabulary_space.get(vocab_instance,
                                                                                   0) + 1  # count every word
-                self.total_ngrams += 1  # count up the total number of ngrams we see
             sentence = training_data.readline()
         training_data.close()
         # make our unks

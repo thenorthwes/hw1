@@ -37,7 +37,7 @@ class Testngram(TestCase):
     def test_Experiment_unigram(self):
         ngrammer = ngram(TESTDATA_TXT, 1)
         self.assertEqual(10, ngrammer.count_ngrams())
-        self.assertEqual(9, ngrammer.distinct_ngrams())
+        self.assertEqual(2, ngrammer.distinct_ngrams()) # unks
 
     def test_counts_ngrams_correctly_for_bigram(self):
         ngrammer = ngram(TESTDATA_TXT, 2)

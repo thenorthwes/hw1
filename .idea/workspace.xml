@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="28e34026-3c5c-4662-a621-d164f79e4b51" name="Default Changelist" comment="PROBLEM 1 -- &#10;&#10;This completes problem one -- or the code does at least N-Grams are unked via file writing and perpelxity is obviously infinity since we will encounter unknown ngrams (for bi/tri)">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PerplexityScorer.py" beforeDir="false" afterPath="$PROJECT_DIR$/PerplexityScorer.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ngrammodel.py" beforeDir="false" afterPath="$PROJECT_DIR$/ngrammodel.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_ngrammodel.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_ngrammodel.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -177,7 +171,7 @@
       <workItem from="1610153416073" duration="55978000" />
       <workItem from="1610664713426" duration="1130000" />
       <workItem from="1610667165900" duration="10966000" />
-      <workItem from="1610778355975" duration="14899000" />
+      <workItem from="1610778355975" duration="15295000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1610153763114</created>
@@ -354,7 +348,14 @@
       <option name="project" value="LOCAL" />
       <updated>1610782048145</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="Homework Done -- Some cleanup could be done">
+      <created>1610841030880</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1610841030880</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -426,7 +427,8 @@
     <MESSAGE value="k smoothing code written -- need to sharpen my prints n stuff but basically done" />
     <MESSAGE value="1 and 2 done" />
     <MESSAGE value="linear_interpolation.py implementing extra credit" />
-    <option name="LAST_COMMIT_MESSAGE" value="linear_interpolation.py implementing extra credit" />
+    <MESSAGE value="Homework Done -- Some cleanup could be done" />
+    <option name="LAST_COMMIT_MESSAGE" value="Homework Done -- Some cleanup could be done" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

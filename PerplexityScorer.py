@@ -67,3 +67,28 @@ def calculate_ngram_perplexity(eval_path: str, vocab: dict, probs: dict, ngram_s
 
     eval_stream.close()
     return perplexity
+
+
+def calculate_linear_perplexity(linear_model, lamda1, lambda2, lambda3, eval_path) -> int:
+    exponent = 0
+    path_to_unked_data = write_new_training_data(eval_path, linear_model.get_vocab(), EVAL_UNKED_DATA_)
+    eval_stream = open(path_to_unked_data, "r")
+    sentence = eval_stream.readline()
+    ngram_counter = 0
+    corpus_size = 0
+    ngram_size = 3
+    while sentence:
+        sentence_tokens = pad_sentence(sentence, ngram_size - 1).split()
+        corpus_size += len(sentence.split()) + 1  # don't count start -- but do count stop
+        for i in range(len(sentence_tokens)):
+            if i + ngram_size-1 < len(sentence_tokens):
+                ngram_key = tuple(sentence_tokens[i:i + ngram_size])
+                exponent += log2(linear_model.get_prob(ngram_key, lamda1, lambda2, lambda3))
+
+            ngram_counter += 1
+        sentence = eval_stream.readline()
+
+    #  Perplexity is equal to 2 to the power of the negative `l`
+    perplexity = 2 ** -(exponent / corpus_size)
+    eval_stream.close()
+    return perplexity

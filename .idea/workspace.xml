@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="28e34026-3c5c-4662-a621-d164f79e4b51" name="Default Changelist" comment="PROBLEM 1 -- &#10;&#10;This completes problem one -- or the code does at least N-Grams are unked via file writing and perpelxity is obviously infinity since we will encounter unknown ngrams (for bi/tri)">
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerplexityScorer.py" beforeDir="false" afterPath="$PROJECT_DIR$/PerplexityScorer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/linear_interpolation.py" beforeDir="false" afterPath="$PROJECT_DIR$/linear_interpolation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ngrammodel.py" beforeDir="false" afterPath="$PROJECT_DIR$/ngrammodel.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -171,7 +174,7 @@
       <workItem from="1610153416073" duration="55978000" />
       <workItem from="1610664713426" duration="1130000" />
       <workItem from="1610667165900" duration="10966000" />
-      <workItem from="1610778355975" duration="15295000" />
+      <workItem from="1610778355975" duration="17042000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1610153763114</created>
@@ -355,7 +358,14 @@
       <option name="project" value="LOCAL" />
       <updated>1610841030880</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="readme changes">
+      <created>1610841276767</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1610841276767</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -428,7 +438,8 @@
     <MESSAGE value="1 and 2 done" />
     <MESSAGE value="linear_interpolation.py implementing extra credit" />
     <MESSAGE value="Homework Done -- Some cleanup could be done" />
-    <option name="LAST_COMMIT_MESSAGE" value="Homework Done -- Some cleanup could be done" />
+    <MESSAGE value="readme changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="readme changes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -457,6 +468,6 @@
     <SUITE FILE_PATH="coverage/hw1$Unittests_for_test_config_Test_test_pad_sentence.coverage" NAME="Unittests for test_config.Test.test_pad_sentence Coverage Results" MODIFIED="1610317451726" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/hw1$Unittests_for_test_ngrammodel_Testngram_test_Experiment_unigram.coverage" NAME="Unittests for test_ngrammodel.Testngram.test_Experiment_unigram Coverage Results" MODIFIED="1610330541162" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/hw1$Unittests_for_test_config_Test.coverage" NAME="Unittests for test_config.Test Coverage Results" MODIFIED="1610840396049" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/hw1$main.coverage" NAME="main Coverage Results" MODIFIED="1610840844180" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/hw1$main.coverage" NAME="main Coverage Results" MODIFIED="1610847341688" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

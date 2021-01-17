@@ -48,7 +48,7 @@ def calculate_ngram_perplexity(eval_path: str, vocab: dict, probs: dict, ngram_s
         sentence_tokens = pad_sentence(sentence, ngram_size - 1).split()
         corpus_size += len(sentence.split()) + 1  # don't count start -- but do count stop
         for i in range(len(sentence_tokens)):
-            ngram_key = tuple(sentence_tokens[i:i + ngram_size])
+            ngram_key = tuple(sentence_tokens[i:i + ngram_size])  # slice to get ngram size tuples
             if probs.get(ngram_key):
                 exponent += log2(probs[ngram_key])
             else:
@@ -56,7 +56,7 @@ def calculate_ngram_perplexity(eval_path: str, vocab: dict, probs: dict, ngram_s
                     exponent += -inf
                 else:
                     # universal smooth -- words we knew but didnt see together
-                    exponent += log2(probs[get_unk_tuple(ngram_size)])
+                    exponent += log2(probs[get_unk_tuple(ngram_size)])  # the ngram sized ungram we add
 
             ngram_counter += 1
         sentence = eval_stream.readline()

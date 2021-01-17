@@ -43,19 +43,19 @@ class ngram:
         self.ngram_sighting: dict = {}
         self.ngram_size = ngram_size
         self.vocabulary_space: dict = {}  # used for figuring out all vocabs
-        self.unk_map: dict = {}  # will be filled with no more than MAX UNKs based on low occurrence words in vocab space
-        self.calculate_unkspace_and_vocab(training_data_path)
+        self.unk_map: dict = {}  # will be filled with < MAX UNKs based on low occurrence words in vocab space
+        self.calculate_unkspace_and_vocab(training_data_path)  # figure out which words to unk and rewrite our data
         path_to_unked_data = write_new_training_data(training_data_path, self.vocabulary_space, TRAINING_UNKED_DATA_)
-        self.extract_vocab(path_to_unked_data, self.ngram_size)
+        self.extract_ngrams(path_to_unked_data, self.ngram_size)  # get all the ngrams
         self.probabilities: dict = {}
-        self.calculate_probabilities(ksize)
+        self.calculate_probabilities(ksize)  # calculate probabilities with K smoothing if applicable
 
-    def extract_vocab(self, training_data_path, ngram_size):
+    def extract_ngrams(self, training_data_path, ngram_size):
         training_data = open(training_data_path, "r")
         sentence = training_data.readline()
         # loop through first and unk low occurrence words
         while sentence:
-            sentence_tokens = pad_sentence(sentence, ngram_size - 1).split()
+            sentence_tokens = pad_sentence(sentence, ngram_size - 1).split()  # pad our sentences with starts n stops
             for i in range(len(sentence_tokens)):
                 # test for if this is a valid ngram with this size
                 if i < len(sentence_tokens) - (
@@ -64,9 +64,9 @@ class ngram:
                     ngram_tuple = tuple(sentence_tokens[i:i + ngram_size])
 
                     self.ngram_key_occurrence[ngram_key] = \
-                        self.ngram_key_occurrence.get(ngram_key, 0) + 1
+                        self.ngram_key_occurrence.get(ngram_key, 0) + 1  # increase how many sightings of the prefix
                     self.ngram_sighting[ngram_tuple] = self.ngram_sighting.get(ngram_tuple,
-                                                                               0) + 1  # how many times have seen this ngram
+                                                                               0) + 1  # how many times have seen ngram
                     self.total_ngrams += 1  # count up the total number of ngrams we see
             sentence = training_data.readline()
         training_data.close()
@@ -74,8 +74,8 @@ class ngram:
     def calculate_probabilities(self, k):
         vocab_x_k = k * len(self.vocabulary_space.keys())
         for ngram_sight in self.ngram_sighting.keys():
-            ngram_key = ngram_sight[0:len(ngram_sight) - 1]
-            prob_numerator = self.ngram_sighting[ngram_sight] + k
+            ngram_key = ngram_sight[0:len(ngram_sight) - 1]  # slice to get the ngram key
+            prob_numerator = self.ngram_sighting[ngram_sight] + k  # k defaults to 0 so no impact if not passed
             prob_denominator = self.ngram_key_occurrence[ngram_key] + vocab_x_k
             if k > 0:
                 # must verify that key + unk was seen -- to bound sightings to this prob space
@@ -84,8 +84,8 @@ class ngram:
                     #  We never saw the key + UNK but we did see the key so we need to bound the prob space
                     self.probabilities[ngram_key_unk] = k / prob_denominator
 
-            self.probabilities[ngram_sight] = prob_numerator/ prob_denominator
-        ultimate_unk_gram = get_unk_tuple(self.ngram_size)
+            self.probabilities[ngram_sight] = prob_numerator / prob_denominator
+        ultimate_unk_gram = get_unk_tuple(self.ngram_size)  # get a ngram sized unkgram and add it if unseen for k/|V|K
         if k > 0 and ultimate_unk_gram not in self.probabilities.keys():
             # we may encounter a triple unk naturally so we only need to test
             self.probabilities[ultimate_unk_gram] = k / vocab_x_k
